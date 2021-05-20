@@ -1,0 +1,19 @@
+voice_command:
+    hotword: "Alexa"
+    language: "en_US"
+    command: [
+      {keywords:["pick", "up"], task: ["PICKPLACE"], value: []},
+      # {keywords:["move", "stop"], task: ["BASEVEL"], value: [0.0, 0.0]},
+      # {keywords:["move", "left"], task: ["BASEVEL"], value: [0.0, 0.3]},
+      # {keywords:["move", "right"], task: ["BASEVEL"], value: [0.0, -0.3]},
+      # {keywords:["move", "forward"], task: ["BASEVEL"], value: [0.3, 0.0]},
+      # {keywords:["move", "backward"], task: ["BASEVEL"], value: [-0.3, 0.0]},
+      {keywords:["navigation", "kitchen"], task: ["BASENAVGOAL", "pose1"], value: []},
+      {keywords:["navigation", "bedroom"], task: ["BASENAVGOAL", "pose2"], value: []},
+      {keywords:["enable", "force", "control"], task: ["ARMFORCECONTROL", "start"], value: []},
+      {keywords:["disable", "force", "control"], task: ["ARMFORCECONTROL", "stop"], value: []},
+      {keywords:["set", "home"], task: ["ARMPOSE", "home"], value: []},
+      {keywords:["set", "out"], task: ["ARMPOSE", "out"], value: []},
+      {keywords:["close", "gripper"], task: ["FINGERPOSITION"], value: [6500, 6500, 6500]},
+      {keywords:["open", "gripper"], task: ["FINGERPOSITION"], value: [0, 0, 0]}
+    ]

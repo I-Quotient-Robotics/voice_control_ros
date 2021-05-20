@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+
+  <include file="$(find caster_moma_bringup)/launch/caster_moma_j2n6s300_bringup.launch" />
+
+  <include file="$(find caster_moma_j2n6s300_moveit_config)/launch/execute.launch" />
+
+  <include file="$(find caster_navigation)/launch/navigation.launch" />
+
+  <node pkg="caster_moma_app" type="arm_init" name="arm_init" output="$(arg log_type)" />
+
+  <!-- <node pkg="rqt_runtime_monitor" type="rqt_runtime_monitor" name="rqt_runtime_monitor" output="$(arg log_type)" /> -->
+</launch>

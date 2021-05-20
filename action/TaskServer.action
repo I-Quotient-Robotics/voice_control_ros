@@ -1,0 +1,9 @@
+# Define the goal
+string[] task
+float64[] value
+---
+# Define the result
+int16 finished_status
+---
+# Define a feedback message
+string step_status

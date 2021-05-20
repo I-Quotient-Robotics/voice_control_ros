@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+
+  <include file="$(find caster_moma_app)/launch/marker_detect.launch" />
+
+  <rosparam file="$(find voice_control)/config/voice_control.yaml" command="load" />
+  <node pkg="voice_control" type="task_server_node" name="task_server" output="$(arg log_type)" />
+
+  <node name="respeaker_node" pkg="respeaker_ros" type="respeaker_node.py"
+	output="screen"/>
+
+  <node name="static_transformer" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 map respeaker_base 100"/>
+
+  <node name="speech_to_text" pkg="voice_control" type="speech_to_text.py" output="screen">
+    <remap from="audio" to="speech_audio"/>
+    <rosparam>
+      language: en-US
+      self_cancellation: false
+      tts_tolerance: 0.5
+    </rosparam>
+  </node>
+
+  <rosparam file="$(find voice_control)/config/voice_command.yaml" command="load" />
+  <node name="voice_command_client_node" pkg="voice_control" type="voice_command_client.py" output="$(arg log_type)" />
+  
+</launch>
